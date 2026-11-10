@@ -1,1 +1,9 @@
-<p>search-page works!</p>,
+<section class="flex flex-col gap-5">
+  <h1 class="text-5xl">Search page</h1>
+  <app-input-search (inputSearchValue)="searchValue.set($event)"></app-input-search>
+  <app-gallery-component
+  [gifs]="searchResource.hasValue() ? searchResource.value() : null"
+  [loading]="searchResource.isLoading()"
+  [error]="searchResource.error()?.message ?? ''"
+  ></app-gallery-component>
+</section>

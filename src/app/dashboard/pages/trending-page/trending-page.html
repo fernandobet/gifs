@@ -1,1 +1,6 @@
-<p>trending-page works!</p>,
+<div class="flex flex-col gap-5">
+  <h1 class="text-5xl">Trending Page</h1>
+  <app-gallery-component [gifs]="trendingResource.hasValue() ? trendingResource.value() : null"
+    [loading]="trendingResource.isLoading()" ,
+    [error]="trendingResource.error()?.message ?? ''"></app-gallery-component>
+</div>

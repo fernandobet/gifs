@@ -1,7 +1,7 @@
 import { IGif } from "../interfaces/IGif";
 import { GifData, IGIFResponse } from "../interfaces/IGifResponse";
 
-export class  GifMapper{
+export class  GifUtils{
 
   static toGif(gifResponse:GifData):IGif{
     return {
@@ -12,6 +12,15 @@ export class  GifMapper{
 
   static toGifArray(gifData:GifData[]):IGif[]{
     return gifData.map(x=> this.toGif(x))
+  }
+
+  static getFromCache():Record<string,IGif[]>{
+    const fromCache = localStorage.getItem('GifsCache');
+    if(fromCache){
+      const cacheParsed = JSON.parse(fromCache);
+      return cacheParsed;
+    }
+    return {};
   }
 
 }

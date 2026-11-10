@@ -1,0 +1,13 @@
+<div class="flex items-center justify-around flex-wrap gap-5">
+@if(loading()){
+<h1>Cargando</h1>
+}
+@if(!loading() && gifs()){
+    @for (gif of gifs(); track $index) {
+    <img src="{{gif.url}}" class="w-100 h-100" alt="">
+  }
+}
+@if(gifs()?.length == 0){
+  <h1 class="text-6xl">Not found data :(</h1>
+}
+</div>
